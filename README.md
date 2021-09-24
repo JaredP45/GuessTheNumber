@@ -1,0 +1,1 @@
+This is a simple program that I will practice basic Python with. The main purpose is to have the user guess the randomly generated number, then give the use an emoji cake for each successful guess. I will use Tinkter for the GUI, and I will attempt to have a clean UX/UI design.
