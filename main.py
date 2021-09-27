@@ -7,7 +7,8 @@ if not in list, output incorrect and if try again
 if correct, output correct and ask if try again
 
 ToDo:
-    * Display list of nums in [*****] format and incrementally show correct numbers as user takes input.
+    * Fix display numbers [*****] where guessing number duplicates don't exist.
+    * If the number of guessed numbers is 5, then program completes.
 
 """
 
@@ -36,8 +37,7 @@ while True:
             else:
                 print('*', sep='-', end='')
 
-        print('\nYou got it 🎂️'
-              '! Go again? (Y/N)')
+        print('\nYou got it! 🎂️ Go again? (Y/N)\n >>> ')
         user_in = str(input())
         if user_in == 'Y':
             continue
