@@ -12,6 +12,7 @@ ToDo:
 """
 
 rand_list = []
+display_list = []
 count = 0
 
 for count in range(5):
@@ -19,31 +20,46 @@ for count in range(5):
     rand_list.append(rand_int)
     count += 1
 
-print(rand_list)
-
 while True:
     try:
-        user_in = int(input('Enter a guessing number.\n'))
+        user_in = int(input('Enter a guessing number.\n >>> '))
     except ValueError:
-        print("You must enter a number.\n")
+        print("You must enter a number.\n >>> ")
         continue
+
     if user_in in rand_list:
-        print('You got it! Go again? (Y/N)')
+        display_list.append(user_in)
+
+        for num in rand_list:
+            if num in display_list:
+                print(num, sep='-', end='')
+            else:
+                print('*', sep='-', end='')
+
+        print('\nYou got it 🎂️'
+              '! Go again? (Y/N)')
         user_in = str(input())
         if user_in == 'Y':
             continue
         elif user_in == 'N':
             break
         else:
-            user_in = str(input("You need to enter (Y/N); Type \'okay\' to continue please."))
+            user_in = str(input("You need to enter (Y/N); Type \'okay\' to continue please. \n >>> "))
             while True:
                 if user_in == 'okay':
                     break
                 else:
-                    user_in = str(input("You need to enter (Y/N); Type \'okay\' to continue please."))
+                    user_in = str(input("You need to enter (Y/N); Type \'okay\' to continue please. \n >>> "))
                     continue
     else:
-        print('Oh no, that was wrong! Go again? (Y/N)')
+        print('\nOh no, that was wrong! Go again? (Y/N)\n >>> ')
+
+        for num in rand_list:
+            if num in display_list:
+                print(num, sep='-', end='')
+            else:
+                print('*', sep='-', end='')
+
         user_in = str(input())
         if user_in == 'Y':
             continue
