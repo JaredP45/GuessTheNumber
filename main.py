@@ -11,15 +11,14 @@ ToDo:
     * If the number of guessed numbers is 5, then program completes.
 
 """
-
 rand_list = []
 display_list = []
 count = 0
 
-for count in range(5):
-    rand_int = random.randint(0, 5)
-    rand_list.append(rand_int)
-    count += 1
+while len(rand_list) < 5:
+    rand_int = random.randint(0, 9)
+    if rand_int not in rand_list:
+        rand_list.append(rand_int)
 
 while True:
     try:
@@ -33,9 +32,9 @@ while True:
 
         for num in rand_list:
             if num in display_list:
-                print(num, sep='-', end='')
+                print(num, end='')
             else:
-                print('*', sep='-', end='')
+                print('*', end='')
 
         print('\nYou got it! 🎂️ Go again? (Y/N)\n >>> ')
         user_in = str(input())
