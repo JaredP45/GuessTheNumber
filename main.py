@@ -7,8 +7,10 @@ if not in list, output incorrect and if try again
 if correct, output correct and ask if try again
 
 ToDo:
-    * Fix display numbers [*****] where guessing number duplicates don't exist.
-    * If the number of guessed numbers is 5, then program completes.
+    * Fix the loop to where the program completes if the display list is 
+        filled up to 5 elements.
+    * Fix issue where user can type anything else other than numbers which 
+        does not compute in guessing program.
 """
 rand_list = []
 display_list = []
