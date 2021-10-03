@@ -1,4 +1,4 @@
-import random
+import GameLoop
 
 """
 generate random list of 5 num
@@ -7,58 +7,19 @@ if not in list, output incorrect and if try again
 if correct, output correct and ask if try again
 
 ToDo:
-    * Reduce redundancy
-    * Reorganize/refactor code to follow OOP
+    * Fix game loop where user can enter same correct number and 
+        score still increments.
 """
 
-rand_list = []
-display_list = []
-number_list = str([0, 1, 2, 3, 4, 5, 6, 7, 8, 9])
-cake = ''
-count = 0
-score = 0
+if __name__ == '__main__':
+    GameLoop.guessTheNumber()
 
-# Generate random list
-while count < 5:
-    rand_int = str(random.randint(0, 9))
-    if rand_int in rand_list:
-        continue
-    else:
-        rand_list.append(rand_int)
-        count += 1
-
-count = 0
-# Begin game
-while count < 5:
-    user_in = input('\nEnter a guessing number.\n >>> ')
-    if user_in not in number_list:
-        print('You must enter a number')
-        continue
-
-    if user_in in rand_list:
-        display_list.append(user_in)
-        for num in rand_list:
-            if num in display_list:
-                print(num, end='')
-            else:
-                print('*', end='')
-
-        print('\nYou got it! 🎂️')
-        count += 1
-        score += 1
-    else:
-        for num in rand_list:
-            if num in display_list:
-                print(num, end='')
-            else:
-                print('*', end='')
-        print('\nOh no, that was wrong!')
-        count += 1
-
-for score in range(score + 1):
-    if score > 0:
-        cake += '🎂️'
-
-print(f'\nThe number was: ', end='')
-for i in rand_list: print(i, end='')
-print(f'\nYour final score is: {score} {cake}')
+    user_input = input('\nWould you like to play again? y/n\n')
+    while user_input != 'q':
+        if user_input == 'y' or user_input == 'yes':
+            GameLoop.guessTheNumber()
+        elif user_input == 'n' or user_input == 'no' or user_input == 'q':
+            break
+        else:
+            print('Enter the correct value please.')
+        user_input = input('Would you like to play again? y/n')
