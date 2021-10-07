@@ -3,7 +3,7 @@ import GameLoop
 """
 generate random list of 5 num
 take user input and compare to list
-if not in list, output incorrect and if try again
+if not in list, output incorrect and ask if try again
 if correct, output correct and ask if try again
 
 ToDo:
