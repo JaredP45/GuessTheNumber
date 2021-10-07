@@ -1,15 +1,15 @@
 import random
 
 
-def displayNumOrStar(random, display):
-    for num in random:
+def display_num_or_star(self, display):
+    for num in self:
         if num in display:
             print(num, end='')
         else:
             print('*', end='')
 
 
-def guessTheNumber():
+def guess_the_number():
     rand_list = []
     count = 0
     gen_count = 0
@@ -37,19 +37,19 @@ def guessTheNumber():
 
         elif user_in in rand_list:
             display_list.append(user_in)
-            displayNumOrStar(rand_list, display_list)
+            display_num_or_star(rand_list, display_list)
 
-            print('\nYou got it! 🎂️')
+            print('\nYou got it! 🎂')
             count += 1
             score += 1
         else:
-            displayNumOrStar(rand_list, display_list)
+            display_num_or_star(rand_list, display_list)
             print('\nOh no, that was wrong!')
             count += 1
 
     for score in range(score + 1):
         if score > 0:
-            cake += '🎂️'
+            cake += '🎂'
 
     print(f'\nThe number was: ', end='')
     for i in rand_list: print(i, end='')
