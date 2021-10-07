@@ -52,5 +52,8 @@ def guess_the_number():
             cake += '🎂'
 
     print(f'\nThe number was: ', end='')
-    for i in rand_list: print(i, end='')
+    
+    for i in rand_list:
+        print(i, end='')
+
     print(f'\nYour final score is: {score} {cake}')
