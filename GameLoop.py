@@ -38,10 +38,12 @@ def guess_the_number():
     while count < 5:
         user_in = input('\nEnter a guessing number.\n >>> ')
 
-        if user_in not in number_list or user_in == '':
+        if user_in == '':
             print('You must enter a number')
             continue
-
+        elif int(user_in) > 9:
+            print('You number must be 9 or less.')
+            continue
         elif user_in in rand_list:
             display_list.append(user_in)
             display_num_or_star(rand_list, display_list)
