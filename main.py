@@ -1,4 +1,4 @@
-import GameLoop
+from GameLoop import guess_the_number
 
 """
 generate random list of 5 num
@@ -12,12 +12,12 @@ ToDo:
 """
 
 if __name__ == '__main__':
-    GameLoop.guessTheNumber()
+    guess_the_number()
 
     user_input = input('\nWould you like to play again? y/n\n')
     while user_input != 'q':
         if user_input == 'y' or user_input == 'yes':
-            GameLoop.guessTheNumber()
+            guess_the_number()
         elif user_input == 'n' or user_input == 'no' or user_input == 'q':
             break
         else:

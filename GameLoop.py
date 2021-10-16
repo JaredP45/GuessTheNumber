@@ -9,16 +9,11 @@ def display_num_or_star(self, display):
             print('*', end='')
 
 
-def guess_the_number():
-    rand_list = []
-    count = 0
-    gen_count = 0
-    display_list = []
-    number_list = str([0, 1, 2, 3, 4, 5, 6, 7, 8, 9])
-    cake = ''
-    score = 0
-
+def generate_rand_list():
     # Generate random list
+    gen_count = 0
+    rand_list = []
+
     while gen_count < 5:
         rand_int = str(random.randint(0, 9))
         if rand_int in rand_list:
@@ -26,6 +21,18 @@ def guess_the_number():
         else:
             rand_list.append(rand_int)
             gen_count += 1
+
+    return rand_list
+
+
+def guess_the_number():
+    count = 0
+    display_list = []
+    number_list = str([0, 1, 2, 3, 4, 5, 6, 7, 8, 9])
+    cake = ''
+    score = 0
+
+    rand_list = generate_rand_list()
 
     # Begin game
     while count < 5:
@@ -47,12 +54,16 @@ def guess_the_number():
             print('\nOh no, that was wrong!')
             count += 1
 
+        if user_in in display_list:
+            print('Correct number already exists.')
+            continue
+
     for score in range(score + 1):
         if score > 0:
             cake += '🎂'
 
     print(f'\nThe number was: ', end='')
-    
+
     for i in rand_list:
         print(i, end='')
 
