@@ -5,7 +5,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="012f1342-b008-4037-84ff-d96e6b061501" name="Changes" comment="Updated game loop to be two separate functions with both inside of a separate file. Also added input check where if user input is empty then tell user they need to enter a number.">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/GameLoop.py" beforeDir="false" afterPath="$PROJECT_DIR$/GameLoop.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
