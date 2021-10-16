@@ -45,20 +45,20 @@ def guess_the_number():
             print('You number must be 9 or less.')
             continue
         elif user_in in rand_list:
-            display_list.append(user_in)
-            display_num_or_star(rand_list, display_list)
+            if user_in in display_list:
+                print('Correct number already exists.')
+                continue
+            else:
+                display_list.append(user_in)
+                display_num_or_star(rand_list, display_list)
 
-            print('\nYou got it! 🎂')
-            count += 1
-            score += 1
+                print('\nYou got it! 🎂')
+                count += 1
+                score += 1
         else:
             display_num_or_star(rand_list, display_list)
             print('\nOh no, that was wrong!')
             count += 1
-
-        if user_in in display_list:
-            print('Correct number already exists.')
-            continue
 
     for score in range(score + 1):
         if score > 0:
