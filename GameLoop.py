@@ -1,12 +1,26 @@
 import random
 
 
+class Error(Exception):
+    pass
+
+
+class ValueNotInRange(Error):
+    pass
+
+
+class DuplicateValue(Error):
+    pass
+
+
 def display_num_or_star(self, display):
+    return_num_list = []
     for num in self:
         if num in display:
-            print(num, end='')
+            return_num_list.append(num)
         else:
-            print('*', end='')
+            return_num_list.append('*')
+    return return_num_list
 
 
 def generate_rand_list():
@@ -23,50 +37,3 @@ def generate_rand_list():
             gen_count += 1
 
     return rand_list
-
-
-def guess_the_number():
-    count = 0
-    display_list = []
-    number_list = str([0, 1, 2, 3, 4, 5, 6, 7, 8, 9])
-    cake = ''
-    score = 0
-
-    rand_list = generate_rand_list()
-
-    # Begin game
-    while count < 5:
-        user_in = input('\nEnter a guessing number.\n >>> ')
-
-        if user_in == '':
-            print('You must enter a number')
-            continue
-        elif int(user_in) > 9:
-            print('You number must be 9 or less.')
-            continue
-        elif user_in in rand_list:
-            if user_in in display_list:
-                print('Correct number already exists.')
-                continue
-            else:
-                display_list.append(user_in)
-                display_num_or_star(rand_list, display_list)
-
-                print('\nYou got it! 🎂')
-                count += 1
-                score += 1
-        else:
-            display_num_or_star(rand_list, display_list)
-            print('\nOh no, that was wrong!')
-            count += 1
-
-    for score in range(score + 1):
-        if score > 0:
-            cake += '🎂'
-
-    print(f'\nThe number was: ', end='')
-
-    for i in rand_list:
-        print(i, end='')
-
-    print(f'\nYour final score is: {score} {cake}')
