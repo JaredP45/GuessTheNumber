@@ -6,42 +6,39 @@ import GameLoop as gL
 
 root = tk.Tk()
 
+rand_list = str(gL.generate_rand_list())
+score = 0
+dup_check = []
+
 
 def submit_clicked():
+    global score
     try:
-        score = 0
-        count = 0
-        rand_list = str(gL.generate_rand_list())
-        dup_check = []
 
-        while count < 5:
-            user_int = entry.get()
+        user_int = entry.get()
 
-            if int(user_int) > 9:
-                raise gL.ValueNotInRange
-            elif user_int in rand_list:
-                if user_int in dup_check:
-                    raise gL.DuplicateValue
-                else:
-                    dup_check.append(user_int)
-                    result = gL.display_num_or_star(rand_list, dup_check)
-                    count += 1
-                    score += 1
+        if int(user_int) > 10:
+            raise gL.ValueNotInRange
+        elif user_int in rand_list:
+            if user_int in dup_check:
+                raise gL.DuplicateValue
             else:
+                dup_check.append(user_int)
                 result = gL.display_num_or_star(rand_list, dup_check)
-                count += 1
-
+                result_label.config(text=result)
+                score += 1
+        else:
+            result = gL.display_num_or_star(rand_list, dup_check)
             result_label.config(text=result)
+
     except gL.ValueNotInRange:
         showerror(title='Incorrect value.', message='You number must be 9 or less.')
     except gL.DuplicateValue:
         showerror(title='Value already exists.', message='Correct number already exists.')
-    finally:
-        showerror(title='Unknown Error.', message='Unknown error has occurred.')
 
 
 root.title('Guess the Number')
-window_width = 300
+window_width = 500
 window_height = 200
 
 # screen dimension
@@ -58,9 +55,7 @@ root.geometry(f'{window_width}x{window_height}+{center_x}+{center_y}')
 frame = ttk.Frame(root)
 
 options = {'padx': 5, 'pady': 5}
-display_list = ttk.Label(frame)
 
-display_list.grid(row=1, columnspan=3, **options)
 entry = tk.StringVar()
 
 user_entry = ttk.Entry(frame, textvariable=entry)
